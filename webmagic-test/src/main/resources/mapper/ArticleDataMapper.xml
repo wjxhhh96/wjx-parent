@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.xinbaokeji.base.mapper.BaseApiMapper">
+    <resultMap id="BaseResultMap" type="com.webmagic.entity.ArticleData">
+        <!--
+          WARNING - @mbg.generated
+        -->
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="title" property="title" jdbcType="VARCHAR"/>
+        <result column="api_name" property="author" jdbcType="VARCHAR"/>
+        <result column="author" property="content" jdbcType="VARCHAR"/>
+        <result column="content_time" property="contentTime" jdbcType="TIMESTAMP"/>
+        <result column="content_hot" property="contentHot" jdbcType="BIGINT"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="url" property="url" jdbcType="VARCHAR"/>
+    </resultMap>
+</mapper>

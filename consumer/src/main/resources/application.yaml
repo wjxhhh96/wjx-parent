@@ -1,0 +1,25 @@
+spring:
+  application:
+    name: @project.artifactId@
+  cloud:
+    stream:
+      bindings:
+        testOne-output:
+          destination: TEST-ONE-TOPIC
+          content-type: application/json
+      rocketmq:
+        binder:
+          name-server: 192.168.8.67:9876
+        bindings:
+          testOne-output:
+            producer:
+              group:
+                TEST-GROUP
+              sync:
+                true
+              sendMessageTimeout:
+                10000
+
+server:
+  port: 8777
+
