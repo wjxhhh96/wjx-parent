@@ -1,3 +1,5 @@
+import com.baomidou.mybatisplus.core.conditions.Wrapper;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
 import com.webmagic.WebmagicApplication;
 import com.webmagic.entity.ArticleData;
 import com.webmagic.mapper.ArticleDataMapper;
@@ -8,6 +10,7 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 /**
  * <p>
@@ -34,6 +37,14 @@ public class MybatisTest {
         articleDataMapper.insert(data);
     }
 
+
+    @Test
+    public void select(){
+        QueryWrapper<ArticleData> wrapper = new QueryWrapper<>();
+        wrapper.lambda().eq(ArticleData::getResourceId,1000L);
+        List<ArticleData> data =
+                articleDataMapper.selectList(wrapper);
+    }
 
 
 
