@@ -2,17 +2,22 @@ import com.webmagic.WebmagicApplication;
 import com.webmagic.qiushibaike.ChromeDownloader;
 import com.webmagic.qiushibaike.QiuShiBaiKePipeline;
 import com.webmagic.qiushibaike.QiuShiBaiKeProcess;
+import com.webmagic.zhihu.ZhiHuPipeline;
+import com.webmagic.zhihu.ZhiHuProcess;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import us.codecraft.webmagic.Page;
 import us.codecraft.webmagic.Spider;
 import us.codecraft.webmagic.downloader.HttpClientDownloader;
 import us.codecraft.webmagic.proxy.Proxy;
 import us.codecraft.webmagic.proxy.SimpleProxyProvider;
 import us.codecraft.webmagic.scheduler.BloomFilterDuplicateRemover;
 import us.codecraft.webmagic.scheduler.QueueScheduler;
+import us.codecraft.webmagic.selector.PlainText;
+import us.codecraft.webmagic.selector.Selectable;
 
 /**
  * <p>
@@ -28,12 +33,21 @@ import us.codecraft.webmagic.scheduler.QueueScheduler;
 public class SpiderTest {
     @Autowired
     private ChromeDownloader chromeDownloader;
+
     @Autowired
     private QiuShiBaiKeProcess qiuShiBaiKeProcess;
     @Autowired
     private QiuShiBaiKePipeline qiuShiBaiKePipeline;
 
 
+    @Autowired
+    private ZhiHuProcess zhiHuProcess;
+    @Autowired
+    private ZhiHuPipeline zhiHuPipeline;
+
+    /**
+     * 爬取 糗事百科
+     */
     @Test
     public void qiushidaquan() {
         //创建下载器
@@ -49,5 +63,22 @@ public class SpiderTest {
                // .setDownloader(httpClientDownloader)
                 .thread(1).run();
     }
+
+
+    /**
+     * 爬取知乎
+     */
+    @Test
+    public void zhihu(){
+        Spider.create(zhiHuProcess).addUrl("https://www.zhihu.com/search?type=content&q=%E5%A4%96%E5%8D%96")
+                .setDownloader(chromeDownloader)
+                .addPipeline(zhiHuPipeline)
+                .thread(1).run();
+    }
+
+
+
+
+
 
 }
