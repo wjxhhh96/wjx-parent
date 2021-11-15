@@ -45,4 +45,8 @@ public class ArticleData implements Serializable {
    private Long resourceId;
 
    private String imgs;
+
+   private String video;
+
+   private String keyWord;
 }

@@ -11,6 +11,7 @@ package com.webmagic.enumpack;
  */
 public enum  ResourceEnum {
     ZHI_HU("知乎"),
+    PI_PI_XIA("皮皮虾"),
 
     ;
     String label;

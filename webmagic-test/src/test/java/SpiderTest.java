@@ -1,4 +1,5 @@
 import com.webmagic.WebmagicApplication;
+import com.webmagic.pipixia.Process;
 import com.webmagic.qiushibaike.ChromeDownloader;
 import com.webmagic.qiushibaike.QiuShiBaiKePipeline;
 import com.webmagic.qiushibaike.QiuShiBaiKeProcess;
@@ -77,7 +78,17 @@ public class SpiderTest {
     }
 
 
-
+    @Autowired
+    private Process process;
+    /**
+     * 爬取皮皮虾
+     */
+    @Test
+    public void pipixia() throws Exception {
+       // process.getInfoByKeyWord("骑手");
+       // process.getInfoByKeyWord("外卖");
+        process.getInfoByKeyWord("外卖它上树了");
+    }
 
 
 
